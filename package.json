@@ -3,40 +3,45 @@
   "version": "1.0.1",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
+    "i": "npm i --force && npx expo install --fix",
+    "format": "prettier --write \"src/**/*.js\"",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "start:default": "npm run start:local",
     "start:local": "npm run android",
     "start:dev": "npm run android",
     "start:devc": "rm -r -f .expo && expo start --android -c",
     "start:code": "code . && npm run start:devc",
-    "push": "git add . && git commit -m",
-    "postpush": "git push && npm run start:dev",
+    "start:first-time": "cp src/config/config.sample.js src/config/config.js && npm run i && npm run start:local",
+    "push": "npm run format && git add . && git commit -m",
+    "postpush": "git push && npm run start:default",
     "clean:a": "rm -f package-lock.json && rm -r -f node_modules && rm -r -f .expo",
     "clean:ai": "npm run clean:a && npm run i",
     "clean:air": "npm run clean:ai && npm run start:devc",
-    "i": "npm i --force && npx expo install --fix",
-    "update:a": "npm i -D npm-check-updates --force && ncu -u && npm run clean:air"
+    "update": "npm i -D npm-check-updates --force && ncu -u && npm run clean:air"
   },
   "dependencies": {
-    "@expo/webpack-config": "^18.1.2",
+    "@expo/webpack-config": "^19.0.0",
     "@react-native-async-storage/async-storage": "1.18.2",
-    "@react-navigation/bottom-tabs": "^6.5.8",
-    "@react-navigation/native": "^6.1.7",
-    "@react-navigation/stack": "^6.3.17",
-    "expo": "^49.0.4",
+    "@react-navigation/bottom-tabs": "^6.5.9",
+    "@react-navigation/native": "^6.1.8",
+    "@react-navigation/stack": "^6.3.18",
+    "expo": "^49.0.13",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.72.3",
-    "react-native-web": "~0.19.7",
+    "react-native": "0.72.5",
+    "react-native-gesture-handler": "~2.12.0",
     "react-native-safe-area-context": "4.6.3",
-    "react-native-gesture-handler": "~2.12.0"
+    "react-native-web": "~0.19.9",
+    "react-native-screens": "~3.22.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.9",
-    "npm-check-updates": "^16.10.16"
+    "@babel/core": "^7.23.0",
+    "npm-check-updates": "^16.14.4",
+    "prettier": "^3.0.3"
   },
   "private": true
 }

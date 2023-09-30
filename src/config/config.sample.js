@@ -1,0 +1,77 @@
+import packagejson from '../../package.json'
+import { DarkTheme, DefaultTheme } from '@react-navigation/native'
+
+export default {
+	app: {
+		name: packagejson.name,
+	},
+	backend: {
+		url: 'http://192.168.224.181:5001',
+	},
+	auth: {
+		jwt: {
+			privateKey: packagejson.name,
+		},
+	},
+	localKeys: {
+		token: 'token',
+	},
+	defaults: {
+		page: 1,
+		limit: 10,
+	},
+	styles: {
+		containers: {
+			dark: {
+				backgroundColor: '#242c40',
+			},
+			light: {
+				backgroundColor: '#d0d0c0',
+			},
+		},
+		colors: {
+			light: {
+				background: 'white',
+				secondaryBackground: '#f2f2f2',
+				text: 'black',
+				icons: '#e68a00',
+				button: 'black',
+				buttonText: '#e68a00',
+			},
+			dark: {
+				background: 'black',
+				secondaryBackground: '#1e1e1e',
+				text: '#FFFFFF',
+				icons: 'orange',
+				button: 'orange',
+				buttonText: 'black',
+			},
+		},
+	},
+	themes: {
+		light: {
+			...DefaultTheme,
+			dark: true,
+			colors: {
+				...DefaultTheme.colors,
+				text: '#616161',
+				card: '#f9f9f9',
+				border: '#9F9F9F',
+				primary: '#333333',
+				background: '#ffffff',
+			},
+		},
+		dark: {
+			...DarkTheme,
+			dark: false,
+			colors: {
+				...DarkTheme.colors,
+				text: '#dadada',
+				card: '#191919',
+				border: '#444859',
+				primary: '#f9f9f9',
+				background: '#121212',
+			},
+		},
+	},
+}

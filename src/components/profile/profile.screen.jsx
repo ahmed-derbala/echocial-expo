@@ -7,42 +7,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TimelineScreen from '../timeline/timeline.screen';
+import config from '../../config/config';
 
-
-
-
-export const DetailsScreen=() =>{
+export const ProfileScreen=() =>{
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Details!</Text>
-      </View>
-    );
-  }
-
-
-
-
-export const ProfileScreen=({ navigation }) =>{
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={config.styles.containers.default}>
         <Text>Settings screen</Text>
-        <Button
-          title="Go to Details"
-          onPress={() => navigation.navigate('Details')}
-        />
       </View>
     );
   }
 
-  const SettingsStack = createStackNavigator();
 
-  export const ProfileStackScreen=() =>{
-    return (
-      <SettingsStack.Navigator >
-        <SettingsStack.Screen name="Settings" component={ProfileScreen} options={{
-        headerShown: false, // change this to `false`
-      }} />
-        <SettingsStack.Screen name="Details" component={DetailsScreen} />
-      </SettingsStack.Navigator>
-    );
-  }
