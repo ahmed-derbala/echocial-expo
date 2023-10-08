@@ -10,5 +10,5 @@ let height = () => {
 
 module.exports = {
 	width: width(),
-	height: height(),
+	height: height()
 }

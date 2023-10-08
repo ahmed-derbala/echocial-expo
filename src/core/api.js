@@ -7,7 +7,7 @@ export const callApi = ({ method, resource, body }) => {
 		log({
 			level: 'debug',
 			req: { method, resource, body },
-			message: 'callApi...',
+			message: 'callApi...'
 		})
 		let endpoint = `${config.backend.url}${resource}`
 
@@ -16,8 +16,8 @@ export const callApi = ({ method, resource, body }) => {
 			body: JSON.stringify(body),
 			headers: {
 				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
+				'Content-Type': 'application/json'
+			}
 		}
 		if (['get', 'head'].includes(method)) delete reqObject.body
 
@@ -41,5 +41,5 @@ export const callApi = ({ method, resource, body }) => {
 export const methods = {
 	get: 'get',
 	post: 'post',
-	put: 'put',
+	put: 'put'
 }

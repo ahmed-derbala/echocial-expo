@@ -9,7 +9,7 @@ export const setRating = async ({ reputationId, rating, facebook }) => {
 		const apiResp = await callApi({
 			method: methods.put,
 			resource: `/api/reputations/${reputationId}`,
-			body: { reputationId, rating, facebook },
+			body: { reputationId, rating, facebook }
 		})
 		return apiResp
 	} catch (err) {
@@ -22,7 +22,7 @@ export const createReputation = async ({ rating, facebook }) => {
 		const apiResp = await callApi({
 			method: methods.post,
 			resource: `/api/reputations/`,
-			body: { rating, facebook },
+			body: { rating, facebook }
 		})
 		return apiResp
 	} catch (err) {
@@ -37,7 +37,7 @@ export const getReputations = async ({ page, limit }) => {
 	try {
 		const apiResp = await callApi({
 			method: methods.get,
-			resource: `/api/reputations?page=${page}&limit=${limit}`,
+			resource: `/api/reputations?page=${page}&limit=${limit}`
 		})
 		return apiResp
 	} catch (err) {

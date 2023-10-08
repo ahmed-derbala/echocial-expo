@@ -5,7 +5,7 @@ import config from '../config/config'
 export const ThemeContext = React.createContext({
 	isDark: false,
 	colors: config.styles.colors.light,
-	setScheme: () => {},
+	setScheme: () => {}
 })
 
 export const ThemeProvider = (props) => {
@@ -28,14 +28,10 @@ export const ThemeProvider = (props) => {
 		// Chaning color schemes according to theme
 		colors: isDark ? config.styles.colors.dark : lightColors,
 		// Overrides the isDark value will cause re-render inside the context.
-		setScheme: (scheme) => setIsDark(scheme === 'dark'),
+		setScheme: (scheme) => setIsDark(scheme === 'dark')
 	}
 
-	return (
-		<ThemeContext.Provider value={defaultTheme}>
-			{props.children}
-		</ThemeContext.Provider>
-	)
+	return <ThemeContext.Provider value={defaultTheme}>{props.children}</ThemeContext.Provider>
 }
 
 // Custom hook to get the theme object returns {isDark, colors, setScheme}

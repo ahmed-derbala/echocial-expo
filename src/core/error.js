@@ -13,7 +13,7 @@ export const errorHandler = ({ err }) => {
 			level: 'error',
 			error: err.error,
 			req: err.req,
-			message: err.message,
+			message: err.message
 		})
 	return log({ level: 'error', error: err })
 }

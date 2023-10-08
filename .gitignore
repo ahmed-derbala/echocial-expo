@@ -20,4 +20,5 @@ web-build/
 src/config/config.js
 
 # backups
-/.backups/*
+backups/
+

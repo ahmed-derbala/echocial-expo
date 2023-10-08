@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
 		width,
 		justifyContent: 'flex-end',
 		alignItems: 'center',
-		paddingBottom: 10,
-	},
+		paddingBottom: 10
+	}
 })
 
 export default Header

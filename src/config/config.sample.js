@@ -2,32 +2,39 @@ import packagejson from '../../package.json'
 import { DarkTheme, DefaultTheme } from '@react-navigation/native'
 
 export default {
+	NODE_ENV: 'local', //production | development | local
 	app: {
-		name: packagejson.name,
+		name: packagejson.name
 	},
 	backend: {
-		url: 'http://192.168.224.181:5001',
+		url: 'http://192.168.224.181:5001'
 	},
 	auth: {
 		jwt: {
-			privateKey: packagejson.name,
-		},
+			privateKey: packagejson.name
+		}
 	},
 	localKeys: {
-		token: 'token',
+		token: 'token'
 	},
 	defaults: {
 		page: 1,
-		limit: 10,
+		limit: 10
 	},
 	styles: {
 		containers: {
 			dark: {
-				backgroundColor: '#242c40',
+				backgroundColor: '#242c40'
 			},
 			light: {
-				backgroundColor: '#d0d0c0',
+				backgroundColor: '#d0d0c0'
 			},
+			default: {
+				flex: 1,
+				alignItems: 'center',
+				justifyContent: 'center',
+				backgroundColor: '#ecf0f1'
+			}
 		},
 		colors: {
 			light: {
@@ -36,7 +43,7 @@ export default {
 				text: 'black',
 				icons: '#e68a00',
 				button: 'black',
-				buttonText: '#e68a00',
+				buttonText: '#e68a00'
 			},
 			dark: {
 				background: 'black',
@@ -44,9 +51,9 @@ export default {
 				text: '#FFFFFF',
 				icons: 'orange',
 				button: 'orange',
-				buttonText: 'black',
-			},
-		},
+				buttonText: 'black'
+			}
+		}
 	},
 	themes: {
 		light: {
@@ -58,8 +65,8 @@ export default {
 				card: '#f9f9f9',
 				border: '#9F9F9F',
 				primary: '#333333',
-				background: '#ffffff',
-			},
+				background: '#ffffff'
+			}
 		},
 		dark: {
 			...DarkTheme,
@@ -70,8 +77,8 @@ export default {
 				card: '#191919',
 				border: '#444859',
 				primary: '#f9f9f9',
-				background: '#121212',
-			},
-		},
-	},
+				background: '#121212'
+			}
+		}
+	}
 }

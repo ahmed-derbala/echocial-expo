@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "i": "npm i --force && npx expo install --fix",
+    "i": "npm i -f && npx expo install --fix",
     "format": "prettier --write \"src/**/*.js\"",
     "start": "expo start",
     "android": "expo start --android",
@@ -17,10 +17,9 @@
     "start:first-time": "cp src/config/config.sample.js src/config/config.js && npm run i && npm run start:local",
     "push": "npm run format && git add . && git commit -m",
     "postpush": "git push && npm run start:default",
-    "clean:a": "rm -f package-lock.json && rm -r -f node_modules && rm -r -f .expo",
-    "clean:ai": "npm run clean:a && npm run i",
-    "clean:air": "npm run clean:ai && npm run start:devc",
-    "update": "npm i -D npm-check-updates --force && ncu -u && npm run clean:air"
+    "clean": "rm -f package-lock.json && rm -r -f node_modules && rm -r -f .expo && npm cache clean -f && npm run i && npm run start:default",
+    "update": "rm -r -f backups/* && cp package.json backups/package.json.backup && cp package-lock.json backups/package-lock.json.backup 2>/dev/null; true && mv node_modules backups/node_modules.backup 2>/dev/null; true && npm i -D npm-check-updates -f && ncu -u && npm run clean",
+    "restore": "cp backups/package.json.backup package.json && cp backups/package-lock.json.backup package-lock.json && mv backups/node_modules.backup node_modules && npm run start:default"
   },
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",
@@ -31,12 +30,11 @@
     "expo": "^49.0.13",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
     "react-native": "0.72.5",
     "react-native-gesture-handler": "~2.12.0",
     "react-native-safe-area-context": "4.6.3",
-    "react-native-web": "~0.19.9",
-    "react-native-screens": "~3.22.0"
+    "react-native-screens": "~3.22.0",
+    "react-native-web": "~0.19.9"
   },
   "devDependencies": {
     "@babel/core": "^7.23.0",

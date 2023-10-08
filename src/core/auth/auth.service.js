@@ -50,6 +50,6 @@ export const signin = async ({ email, username, password }) => {
 	return callApi({
 		method: methods.post,
 		resource: '/api/auth/signin',
-		body: { username, email, password },
+		body: { username, email, password }
 	})
 }

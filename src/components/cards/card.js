@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
 		height: height / 4,
 		borderRadius: 10,
 		backgroundColor: 'green',
-		alignItems: 'center',
-	},
+		alignItems: 'center'
+	}
 })
 
 export default Card
