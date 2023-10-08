@@ -7,7 +7,7 @@ export default {
 		name: packagejson.name
 	},
 	backend: {
-		url: 'http://192.168.224.181:5001'
+		url: 'http://192.168.229.181:5001'
 	},
 	auth: {
 		jwt: {
