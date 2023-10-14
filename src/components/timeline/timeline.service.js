@@ -5,9 +5,9 @@ import { errorHandler } from '../../core/error'
 import { log } from '../../core/log'
 
 export const saveToken = async (value) => {
-	log({ level: 'debug', message: 'saveToken...' })
-
 	try {
+		log({ level: 'debug', message: 'saveToken...' })
+
 		await AsyncStorage.setItem(config.localKeys.token, value)
 	} catch (err) {
 		errorHandler({ err })

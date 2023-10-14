@@ -1,6 +1,6 @@
 import config from '../config/config'
 
-export default log = ({ level, message, req, error }) => {
+export const log = ({ level, message, req, error }) => {
 	if (config.NODE_ENV === 'production') return
 
 	if (!level) level = 'debug'

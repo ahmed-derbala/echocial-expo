@@ -4,7 +4,7 @@ The frontend of echocial, the social echo
 
 # first time: set config.js, install modules and run
 ```
-npm run start:first-time
+npm run first-time
 ```
 
 # features

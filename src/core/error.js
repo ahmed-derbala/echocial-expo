@@ -1,19 +1,28 @@
 import config from '../config/config'
 import { log } from './log'
 
-export const errorHandler = ({ err }) => {
-	//console.log('errorhandler',err)
-	if (config.NODE_ENV == 'production') return alert('error')
-	if (err.message) alert(err.message)
-	else if (err.error) alert(err.error)
-	else alert(err)
+export const errorHandler = ({ err, caller }) => {
+	try {
+		let error = err
+		//console.log('errorHandler.caller', errorHandler.caller)
+		//console.log('errorhandler', err)
+		if (config.NODE_ENV == 'production') return alert('error')
+		if (err.message) {
+			error = err.message
+			alert(err.message)
+		} else if (err.error) {
+			error = err.error
+			alert(err.error)
+		} else alert(err)
 
-	if (err.error)
 		return log({
 			level: 'error',
-			error: err.error,
+			error,
 			req: err.req,
-			message: err.message
+			message: err.message,
+			caller
 		})
-	return log({ level: 'error', error: err })
+	} catch (e) {
+		console.error(e)
+	}
 }

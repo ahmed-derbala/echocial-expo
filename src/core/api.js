@@ -4,24 +4,24 @@ import { log } from './log'
 
 export const callApi = ({ method, resource, body }) => {
 	return new Promise(async (resolve, reject) => {
-		log({
-			level: 'debug',
-			req: { method, resource, body },
-			message: 'callApi...'
-		})
-		let endpoint = `${config.backend.url}${resource}`
-
-		let reqObject = {
-			method,
-			body: JSON.stringify(body),
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json'
-			}
-		}
-		if (['get', 'head'].includes(method)) delete reqObject.body
-
 		try {
+			log({
+				level: 'debug',
+				req: { method, resource, body },
+				message: 'callApi...'
+			})
+			let endpoint = `${config.backend.url}${resource}`
+
+			let reqObject = {
+				method,
+				body: JSON.stringify(body),
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json'
+				}
+			}
+			if (['get', 'head'].includes(method)) delete reqObject.body
+
 			let resp = await fetch(endpoint, reqObject)
 
 			resp = await resp.json()
@@ -32,7 +32,7 @@ export const callApi = ({ method, resource, body }) => {
 
 			return resolve(resp.data)
 		} catch (err) {
-			console.log('callApi catch...')
+			console.error('callApi catch...')
 			return reject(err)
 		}
 	})

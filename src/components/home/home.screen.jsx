@@ -9,7 +9,7 @@ import TimelineScreen from "../timeline/timeline.screen"
 import { ProfileScreen } from "../profile/profile.screen"
 import { CreateReputationScreen } from "../reputation/create-reputation.screen"
 import config from "../../config/config"
-import { SettingsScreen,DetailsScreen } from "../settings/settings.screen"
+import { DetailsScreen } from "../settings/settings.screen"
 
 function TimelineScreenNavigator({ navigation }) {
   /* return (
