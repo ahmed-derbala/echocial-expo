@@ -30,7 +30,7 @@ export const callApi = ({ method, resource, body }) => {
 				return reject(resp)
 			}
 
-			return resolve(resp.data)
+			return resolve(resp)
 		} catch (err) {
 			//console.error('callApi catch...')
 			return reject(err)

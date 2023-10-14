@@ -31,10 +31,11 @@ export const createReputation = async ({ rating, facebook }) => {
 }
 
 export const getReputations = async ({ page, limit }) => {
-	if (!page) page = config.defaults.page
-	if (!limit) page = config.defaults.limit
-
 	try {
+		log({ level: 'debug', message: 'getReputations...', caller: 'getReputations' })
+		if (!page) page = config.defaults.page
+		if (!limit) page = config.defaults.limit
+
 		const apiResp = await callApi({
 			method: methods.get,
 			resource: `/api/reputations?page=${page}&limit=${limit}`
