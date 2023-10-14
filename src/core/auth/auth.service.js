@@ -17,6 +17,8 @@ export const saveToken = async (value) => {
 export const getToken = async () => {
 	try {
 		const value = await AsyncStorage.getItem(config.localKeys.token)
+		console.log({ value })
+		return value
 		if (value !== null) {
 			return value
 			/* this.setState({

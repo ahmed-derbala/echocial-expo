@@ -8,7 +8,7 @@ export const callApi = ({ method, resource, body }) => {
 			log({
 				level: 'debug',
 				req: { method, resource, body },
-				message: 'callApi...'
+				caller: 'callApi'
 			})
 			let endpoint = `${config.backend.url}${resource}`
 
@@ -32,7 +32,7 @@ export const callApi = ({ method, resource, body }) => {
 
 			return resolve(resp.data)
 		} catch (err) {
-			console.error('callApi catch...')
+			//console.error('callApi catch...')
 			return reject(err)
 		}
 	})

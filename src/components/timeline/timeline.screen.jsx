@@ -15,6 +15,9 @@ const TimelineScreen = () => {
     try {
       log({ level: "debug", message: "getReputationsFromAPI..." });
       const getReputationsResp = await getReputations({ page: 1, limit: 10 })
+      if(!getReputationsResp){
+        return errorHandler({err:'Network error'})
+      }
       setReputations(getReputationsResp.data)
       setLoading(false)
     } catch (err) {
@@ -28,7 +31,7 @@ const TimelineScreen = () => {
 
   return (
     <View style={styles.container}>
-      {!loading && reputations.length !== 0 && (
+      {!loading && reputations && reputations.length !== 0 && (
         <View>
           <SafeAreaView style={styles.container}>
             <FlatList

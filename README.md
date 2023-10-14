@@ -1,5 +1,5 @@
 # echocial
-The frontend of echocial, the social echo
+Frontend of Echocial. A mobile-first app for online reputation
 
 
 # first time: set config.js, install modules and run

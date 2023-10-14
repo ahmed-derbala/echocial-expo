@@ -1,15 +1,30 @@
 import config from '../config/config'
 
-export const log = ({ level, message, req, error }) => {
+export const log = ({ level, message, req, error, caller }) => {
 	if (config.NODE_ENV === 'production') return
 
 	if (!level) level = 'debug'
 
-	if (level === 'error') {
-		console.error({ level, message, req: JSON.stringify(req), error })
-	} else {
-		console.log({ level, message, req: JSON.stringify(req), error })
+	let logObject = { level, message, req: JSON.stringify(req), error, caller }
+	for (const [key, value] of Object.entries(logObject)) {
+		if (value === undefined) {
+			delete logObject[key]
+		}
 	}
 
-	return { level, message, req, error }
+	switch (level) {
+		case 'debug':
+			console.debug(logObject)
+			break
+		case 'warn':
+			console.warn(logObject)
+			break
+		case 'error':
+			console.log(logObject)
+			break
+		default:
+			console.log(logObject)
+	}
+
+	return logObject
 }

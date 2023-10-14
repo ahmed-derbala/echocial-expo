@@ -3,10 +3,11 @@ import { log } from './log'
 
 export const errorHandler = ({ err, caller }) => {
 	try {
+		if (config.NODE_ENV == 'production') return alert('error')
+
 		let error = err
 		//console.log('errorHandler.caller', errorHandler.caller)
 		//console.log('errorhandler', err)
-		if (config.NODE_ENV == 'production') return alert('error')
 		if (err.message) {
 			error = err.message
 			alert(err.message)
