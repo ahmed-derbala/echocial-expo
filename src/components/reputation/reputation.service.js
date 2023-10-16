@@ -4,6 +4,7 @@ import { callApi, methods } from '../../core/api'
 import { errorHandler } from '../../core/error'
 import { log } from '../../core/log'
 import { processLimit, processPage } from '../../core/pagination'
+import { successHandler } from '../../core/success'
 
 export const setRating = async ({ reputationId, rating, facebook }) => {
 	try {
@@ -25,6 +26,7 @@ export const createReputation = async ({ rating, facebook }) => {
 			resource: `/api/reputations/`,
 			body: { rating, facebook }
 		})
+		successHandler({ message: 'Reputation created successfully' })
 		return apiResp
 	} catch (err) {
 		errorHandler({ err })

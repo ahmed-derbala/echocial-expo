@@ -9,7 +9,6 @@ import TimelineScreen from '../timeline/timeline.screen'
 import { ProfileScreen } from '../profile/profile.screen'
 import { CreateReputationScreen } from '../reputation/create-reputation.screen'
 import config from '../../config/config'
-import { DetailsScreen } from '../settings/settings.screen'
 
 function TimelineScreenNavigator({ navigation }) {
 	/* return (
@@ -36,7 +35,6 @@ function HomeStackScreen() {
 					headerShown: false // change this to `false`
 				}}
 			/>
-			<HomeStack.Screen name="Details" component={DetailsScreen} />
 		</HomeStack.Navigator>
 	)
 }
@@ -46,12 +44,12 @@ const Tab = createBottomTabNavigator()
 export default function HomeScreen() {
 	const colorScheme = useColorScheme()
 	return (
-		<NavigationContainer theme={colorScheme === 'light' ? config.themes.light : config.themes.dark}>
-			<Tab.Navigator>
-				<Tab.Screen name="Timeline" component={HomeStackScreen} />
-				<Tab.Screen name="Create reputation" component={CreateReputationScreen} />
-				<Tab.Screen name="Profile" component={ProfileScreen} />
-			</Tab.Navigator>
-		</NavigationContainer>
+		//<NavigationContainer theme={colorScheme === 'light' ? config.themes.light : config.themes.dark}>
+		<Tab.Navigator>
+			<Tab.Screen name="Timeline" component={HomeStackScreen} />
+			<Tab.Screen name="Create reputation" component={CreateReputationScreen} />
+			<Tab.Screen name="Profile" component={ProfileScreen} />
+		</Tab.Navigator>
+		//</NavigationContainer>
 	)
 }

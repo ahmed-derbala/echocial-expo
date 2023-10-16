@@ -7,6 +7,7 @@ import { errorHandler } from '../../core/error'
 import { log } from '../../core/log'
 import React, { useState, useEffect } from 'react'
 import { RefreshControl } from 'react-native-gesture-handler'
+import { successHandler } from '../../core/success'
 
 const TimelineScreen = () => {
 	const [reputations, setReputations] = useState([])

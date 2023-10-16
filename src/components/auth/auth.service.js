@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import config from '../../config/config'
-import { callApi, methods } from '../api'
-import { errorHandler } from '../error'
-import { log } from '../log'
+import { callApi, methods } from '../../core/api'
+import { errorHandler } from '../../core/error'
+import { log } from '../../core/log'
 
 export const saveToken = async (value) => {
 	log({ level: 'debug', message: 'saveToken...' })
@@ -35,22 +35,23 @@ export const getToken = async () => {
 	}
 }
 
-export const deleteToken = async () => {
+export const deleteToken = async ({ navigation }) => {
 	try {
-		await AsyncStorage.removeItem(config().auth.jwt.tokenKey).then(() => {
+		await AsyncStorage.removeItem(config.localKeys.token).then(() => {
 			/* this.setState({
             jwt: ''
           })*/
 		})
+		navigation.navigate('Auth')
 	} catch (err) {
 		errorHandler({ err })
 	}
 }
 
-export const signin = async ({ email, username, password }) => {
+export const signin = async ({ loginId, password }) => {
 	return callApi({
 		method: methods.post,
 		resource: '/api/auth/signin',
-		body: { username, email, password }
+		body: { loginId, password }
 	})
 }
