@@ -7,7 +7,7 @@ export default {
 		name: packagejson.name
 	},
 	backend: {
-		url: 'http://192.168.34.181:5001'
+		url: 'http://192.168.100.11:5001'
 	},
 	auth: {
 		jwt: {
@@ -17,9 +17,10 @@ export default {
 	localKeys: {
 		token: 'token'
 	},
-	defaults: {
-		page: 1,
-		limit: 10
+	pagination: {
+		minLimit: 1,
+		defaultLimit: 100, //limit to use when no limit is provided
+		maxLimit: 300
 	},
 	styles: {
 		containers: {

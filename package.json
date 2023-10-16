@@ -1,6 +1,8 @@
 {
   "name": "echocial",
   "version": "1.0.1",
+  "description": "Frontend of Echocial. A mobile-first app for online reputation",
+  "author": "Ahmed Derbala <ahmed.derbala@esprit.tn>",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "first-time": "cp src/config/config.sample.js src/config/config.js && npm run i && npm run start:local",

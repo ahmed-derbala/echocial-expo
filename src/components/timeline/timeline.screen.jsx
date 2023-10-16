@@ -6,6 +6,7 @@ import { getReputations } from '../reputation/reputation.service'
 import { errorHandler } from '../../core/error'
 import { log } from '../../core/log'
 import React, { useState, useEffect } from 'react'
+import { RefreshControl } from 'react-native-gesture-handler'
 
 const TimelineScreen = () => {
 	const [reputations, setReputations] = useState([])
@@ -13,7 +14,7 @@ const TimelineScreen = () => {
 
 	const getReputationsFromAPI = async () => {
 		try {
-			log({ level: 'debug', message: 'getReputationsFromAPI...', caller: 'getReputationsFromAPI' })
+			log({ level: 'debug', message: 'getReputationsFromAPI...', caller: getReputationsFromAPI.name })
 			const getReputationsResp = await getReputations({ page: 1, limit: 10 })
 			if (!getReputationsResp || !getReputationsResp.data) {
 				return errorHandler({ err: 'Network error' })
@@ -21,7 +22,7 @@ const TimelineScreen = () => {
 			setReputations(getReputationsResp.data)
 			setLoading(false)
 		} catch (err) {
-			errorHandler({ err, caller: 'getReputationsFromAPI' })
+			errorHandler({ err, caller: getReputationsFromAPI.name })
 		}
 	}
 
@@ -34,7 +35,12 @@ const TimelineScreen = () => {
 			{!loading && reputations.length !== 0 && (
 				<View>
 					<SafeAreaView style={styles.container}>
-						<FlatList data={reputations} renderItem={({ item }) => <TimelineCard facebook={item.facebook} rating={item.rating} _id={item._id} />} keyExtractor={(item) => item.facebook.id} />
+						<FlatList
+							data={reputations}
+							renderItem={({ item }) => <TimelineCard facebook={item.facebook} rating={item.rating} _id={item._id} />}
+							keyExtractor={(item) => item.facebook.id}
+							refreshControl={<RefreshControl refreshing={loading} onRefresh={getReputationsFromAPI} />}
+						/>
 					</SafeAreaView>
 				</View>
 			)}

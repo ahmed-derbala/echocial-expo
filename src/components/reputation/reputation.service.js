@@ -3,6 +3,7 @@ import config from '../../config/config'
 import { callApi, methods } from '../../core/api'
 import { errorHandler } from '../../core/error'
 import { log } from '../../core/log'
+import { processLimit, processPage } from '../../core/pagination'
 
 export const setRating = async ({ reputationId, rating, facebook }) => {
 	try {
@@ -33,8 +34,8 @@ export const createReputation = async ({ rating, facebook }) => {
 export const getReputations = async ({ page, limit }) => {
 	try {
 		log({ level: 'debug', message: 'getReputations...', caller: 'getReputations' })
-		if (!page) page = config.defaults.page
-		if (!limit) page = config.defaults.limit
+		page = processPage(page)
+		limit = processLimit(limit)
 
 		const apiResp = await callApi({
 			method: methods.get,
