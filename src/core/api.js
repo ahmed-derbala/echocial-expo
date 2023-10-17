@@ -26,7 +26,7 @@ export const callApi = ({ method, resource, body }) => {
 
 			resp = await resp.json()
 			//console.log('resp',resp)
-			if (![200, 201].includes(resp.status)) {
+			if (resp.status > 499) {
 				return reject(resp)
 			}
 

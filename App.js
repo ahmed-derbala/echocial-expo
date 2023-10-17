@@ -6,7 +6,8 @@ import HomeScreen from "./src/components/home/home.screen"
 import {AuthContext} from "./src/core/auth"
 import {SplashScreen} from "./src/components/splash/splash.screen"
 //import {AuthScreen} from "./src/components/auth/auth.screen"
-import {signin} from "./src/components/auth/auth.service"
+import * as authAPI from "./src/components/auth/auth.api"
+import {saveToken,getToken,deleteToken} from "./src/components/auth/auth.service"
 
 
 
@@ -39,6 +40,9 @@ function AuthScreen() {
 export default function App({ navigation }) {
   const [state, dispatch] = React.useReducer(
     (prevState, action) => {
+      console.log({prevState})
+      console.log({action})
+
       switch (action.type) {
         case 'RESTORE_TOKEN':
           return {
@@ -74,7 +78,7 @@ export default function App({ navigation }) {
 
       try {
         // Restore token stored in `SecureStore` or any other encrypted storage
-         userToken = await SecureStore.getItemAsync('userToken');
+         userToken = await getToken()
       } catch (e) {
         // Restoring token failed
       }
@@ -92,8 +96,10 @@ export default function App({ navigation }) {
   const authContext = React.useMemo(
     () => ({
       signIn: async ({loginId,password}) => {
-        const signinAPIResp = await signin({loginId,password})
-        console.log({signinAPIResp})
+        const signinAPIResp = await authAPI.signin({loginId,password})
+        //console.log({signinAPIResp})
+        if(signinAPIResp.status !== 200)alert(signinAPIResp.message)
+        saveToken(signinAPIResp.data.token)
         // In a production app, we need to send some data (usually username, password) to server and get a token
         // We will also need to handle errors if sign in failed
         // After getting token, we need to persist the token using `SecureStore` or any other encrypted storage
@@ -101,7 +107,10 @@ export default function App({ navigation }) {
 
         dispatch({ type: 'SIGN_IN', token: signinAPIResp.data.token });
       },
-      signOut: () => dispatch({ type: 'SIGN_OUT' }),
+      signOut:  () => {
+         deleteToken()
+        dispatch({ type: 'SIGN_OUT' })
+      },
       signUp: async (data) => {
         // In a production app, we need to send user data to server and get a token
         // We will also need to handle errors if sign up failed
