@@ -1,13 +1,15 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native'
+import { Text, View, SafeAreaView, FlatList } from 'react-native'
 import Header from '../header/header'
 import TimelineCard from './timeline.card'
-import { getReputations } from '../reputation/reputation.service'
 import { errorHandler } from '../../core/error'
 import { log } from '../../core/log'
 import React, { useState, useEffect } from 'react'
 import { RefreshControl } from 'react-native-gesture-handler'
 import { successHandler } from '../../core/success'
+import * as reputationAPI from '../reputation/reputation.api'
+import timelineStyles from './timeline.style'
+import { colorScheme } from '../../core/theme'
 
 const TimelineScreen = () => {
 	const [reputations, setReputations] = useState([])
@@ -16,7 +18,7 @@ const TimelineScreen = () => {
 	const getReputationsFromAPI = async () => {
 		try {
 			log({ level: 'debug', message: 'getReputationsFromAPI...', caller: getReputationsFromAPI.name })
-			const getReputationsResp = await getReputations({ page: 1, limit: 10 })
+			const getReputationsResp = await reputationAPI.getReputations({ page: 1, limit: 10 })
 			if (!getReputationsResp || !getReputationsResp.data) {
 				return errorHandler({ err: 'Network error' })
 			}
@@ -32,10 +34,10 @@ const TimelineScreen = () => {
 	}, [])
 
 	return (
-		<View style={styles.container}>
+		<View style={colorScheme({ style: timelineStyles.container })}>
 			{!loading && reputations.length !== 0 && (
 				<View>
-					<SafeAreaView style={styles.container}>
+					<SafeAreaView style={colorScheme({ style: timelineStyles.container })}>
 						<FlatList
 							data={reputations}
 							renderItem={({ item }) => <TimelineCard facebook={item.facebook} rating={item.rating} _id={item._id} />}
@@ -48,14 +50,5 @@ const TimelineScreen = () => {
 		</View>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: 'black',
-		alignItems: 'center',
-		justifyContent: 'center'
-	}
-})
 
 export default TimelineScreen

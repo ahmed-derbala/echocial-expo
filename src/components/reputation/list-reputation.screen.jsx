@@ -7,7 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import TimelineScreen from '../timeline/timeline.screen'
 import React, { Component, useState, useRef } from 'react'
-import { setRating } from './reputation.service'
+import * as reputationAPI from './reputation.api'
 
 export const ListReputationScreen = () => {
 	const [facebookId, setFacebookId] = useState(null)
@@ -33,7 +33,7 @@ export const ListReputationScreen = () => {
 
 			<TextInput value={ratingValue} onChangeText={(ratingValue) => onRatingValueChange(ratingValue)} placeholder={'ratingValue'} style={styles.input} />
 
-			<Button title={'Submit'} style={styles.input} onPress={() => setRating({ reputationId: 'ee', currentValue: 5 })} />
+			<Button title={'Submit'} style={styles.input} onPress={() => reputationAPI.setRating({ reputationId: 'ee', currentValue: 5 })} />
 		</View>
 	)
 }

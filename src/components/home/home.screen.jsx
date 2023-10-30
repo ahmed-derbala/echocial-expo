@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Button, Text, View, useColorScheme } from 'react-native'
+import { StyleSheet, Button, Text, View } from 'react-native'
 import Header from '../header/header'
 import Card from '../cards/card'
 import { NavigationContainer } from '@react-navigation/native'
@@ -42,7 +42,7 @@ function HomeStackScreen() {
 const Tab = createBottomTabNavigator()
 
 export default function HomeScreen() {
-	const colorScheme = useColorScheme()
+	const colorScheme = config.styles.colors.useColorScheme
 	return (
 		//<NavigationContainer theme={colorScheme === 'light' ? config.themes.light : config.themes.dark}>
 		<Tab.Navigator>

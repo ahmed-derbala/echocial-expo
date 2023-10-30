@@ -1,13 +1,15 @@
 import packagejson from '../../package.json'
 import { DarkTheme, DefaultTheme } from '@react-navigation/native'
 
+const colorScheme = () => useColorScheme()
 export default {
 	NODE_ENV: 'local', //production | development | local
 	app: {
 		name: packagejson.name
 	},
 	backend: {
-		url: 'http://192.168.91.181:5001'
+		//url: 'http://192.168.196.181:5001'
+		url: 'http://192.168.100.11:5001'
 	},
 	auth: {
 		jwt: {
@@ -53,7 +55,8 @@ export default {
 				icons: 'orange',
 				button: 'orange',
 				buttonText: 'black'
-			}
+			},
+			colorScheme
 		}
 	},
 	themes: {
