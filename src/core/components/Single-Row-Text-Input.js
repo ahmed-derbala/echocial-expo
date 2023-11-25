@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import Separator from './Separator'
-import config from '../../config/config'
+import config from '../../config'
 
 /*
 const colorScheme = config.styles.colors.useColorScheme

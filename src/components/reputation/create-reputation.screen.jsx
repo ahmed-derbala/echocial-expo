@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import TimelineScreen from '../timeline/timeline.screen'
 import React, { Component, useState, useRef } from 'react'
 import { setRating, createReputation } from './reputation.service'
-import config from '../../config/config'
+import config from '../../config'
 import * as reputationAPI from './reputation.api'
 
 export const CreateReputationScreen = () => {

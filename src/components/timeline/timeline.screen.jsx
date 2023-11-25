@@ -9,7 +9,7 @@ import { RefreshControl } from 'react-native-gesture-handler'
 import { successHandler } from '../../core/success'
 import * as reputationAPI from '../reputation/reputation.api'
 import timelineStyles from './timeline.style'
-import { colorScheme } from '../../core/theme'
+//import { colorScheme } from '../../core/theme'
 
 const TimelineScreen = () => {
 	const [reputations, setReputations] = useState([])
@@ -34,10 +34,10 @@ const TimelineScreen = () => {
 	}, [])
 
 	return (
-		<View style={colorScheme({ style: timelineStyles.container })}>
+		<View style={timelineStyles.container}>
 			{!loading && reputations.length !== 0 && (
 				<View>
-					<SafeAreaView style={colorScheme({ style: timelineStyles.container })}>
+					<SafeAreaView style={timelineStyles.container}>
 						<FlatList
 							data={reputations}
 							renderItem={({ item }) => <TimelineCard facebook={item.facebook} rating={item.rating} _id={item._id} />}

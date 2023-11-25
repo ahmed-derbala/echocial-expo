@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
-import config from '../../config/config'
+import config from '../../config'
 import { width } from '../../core/device'
 
 const Header = ({ title }) => {

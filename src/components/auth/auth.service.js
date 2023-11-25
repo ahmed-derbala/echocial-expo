@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import config from '../../config/config'
+import config from '../../config'
 import { errorHandler } from '../../core/error'
 import { log } from '../../core/log'
 

@@ -1,4 +1,4 @@
-import config from '../config/config'
+import config from '../config'
 import { log } from './log'
 
 export const successHandler = ({ message, caller }) => {

@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import TimelineScreen from '../timeline/timeline.screen'
 import { ProfileScreen } from '../profile/profile.screen'
 import { CreateReputationScreen } from '../reputation/create-reputation.screen'
-import config from '../../config/config'
+import config from '../../config'
 
 function TimelineScreenNavigator({ navigation }) {
 	/* return (

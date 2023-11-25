@@ -17,7 +17,7 @@ web-build/
 .metro-health-check*
 
 #config files
-src/config/config.js
+src/config.js
 
 # backups
 backups/

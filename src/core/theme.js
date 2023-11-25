@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import config from '../config/config'
+import config from '../config'
 import { useColorScheme } from 'react-native'
 
 export const ThemeContext = React.createContext({

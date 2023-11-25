@@ -1,7 +1,7 @@
-import config from '../config/config'
+import config from '../config'
 import { errorHandler } from './error'
 import { log } from './log'
-import { getToken } from '../components/auth/auth.service'
+import { getToken } from '../components/auth.service'
 
 export const callApi = ({ method, resource, body }) => {
 	return new Promise(async (resolve, reject) => {

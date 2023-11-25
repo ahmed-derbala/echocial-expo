@@ -1,4 +1,4 @@
-import config from '../config/config'
+import config from '../config'
 
 export const log = ({ level, message, req, error, caller }) => {
 	if (config.NODE_ENV === 'production') return
