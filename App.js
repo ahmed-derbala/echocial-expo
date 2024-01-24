@@ -6,8 +6,8 @@ import HomeScreen from "./src/components/home/home.screen"
 import { AuthContext } from "./src/core/auth"
 import { SplashScreen } from "./src/components/splash/splash.screen"
 //import {AuthScreen} from "./src/components/auth.screen"
-import * as authAPI from "./src/components/auth.api"
-import { saveToken, getToken, deleteToken, saveUser } from "./src/components/auth.service"
+import * as authAPI from "./src/components/auth/auth.api"
+import { saveToken, getToken, deleteToken, saveUser } from "./src/components/auth/auth.service"
 
 
 
