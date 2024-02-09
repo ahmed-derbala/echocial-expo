@@ -1,3 +1,13 @@
+#uploaded files
+uploads/
+
+# backups
+backups/
+
+#config files
+src/config/production.config.js
+src/config/development.config.js
+
 node_modules/
 .expo/
 dist/
@@ -16,9 +26,7 @@ web-build/
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
 
-#config files
-src/config.js
 
-# backups
-backups/
+
+
 

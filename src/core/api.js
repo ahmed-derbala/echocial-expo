@@ -27,7 +27,7 @@ export const callApi = ({ method, resource, body }) => {
 			let resp = await fetch(endpoint, reqObject)
 
 			resp = await resp.json()
-			//console.log('resp',resp)
+			//console.log({resp})
 			if (resp.status > 499) {
 				return reject(resp)
 			}

@@ -12,13 +12,13 @@ export default function AuthScreen({ navigation }) {
 	const { signIn } = React.useContext(AuthContext)
 
 	const onLoginIdChange = (value) => {
-		value = 'ahmed.derbala@esprit.tn'
+		//value = 'ahmed.derbala@esprit.tn'
 		//value="647287f6a21ccbcb26b3de78"
 		setLoginId(value)
 	}
 
 	const onPasswordChange = (value) => {
-		value = '123'
+		//value = '123'
 		setPassword(value)
 	}
 

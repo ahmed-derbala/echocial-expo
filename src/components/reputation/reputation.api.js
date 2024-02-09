@@ -21,6 +21,7 @@ export const setRating = async ({ reputationId, rating, facebook }) => {
 
 export const createReputation = async ({ rating, facebook }) => {
 	try {
+		console.log({ rating, facebook })
 		const apiResp = await callApi({
 			method: 'post',
 			resource: `/api/reputations/`,

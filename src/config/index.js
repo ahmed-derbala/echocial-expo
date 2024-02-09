@@ -8,7 +8,7 @@ export default {
 		name: packagejson.name
 	},
 	backend: {
-		url: 'http://192.168.123.181:5001'
+		url: 'http://192.168.132.181:5001'
 		//url: 'http://192.168.100.11:5001'
 	},
 	auth: {

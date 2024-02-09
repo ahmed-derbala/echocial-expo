@@ -1,11 +1,15 @@
 {
   "name": "echocial",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Frontend of Echocial. A mobile-first app for online reputation",
-  "author": "Ahmed Derbala <ahmed.derbala@esprit.tn>",
+  "author": "Ahmed Derbala <derbala.ahmed531992@gmail.com>",
   "main": "node_modules/expo/AppEntry.js",
+  "engines": {
+    "node": "20"
+  },
   "scripts": {
-    "first-time": "cp src/config/config.sample.js src/config/config.js && npm run i && npm run start:local",
+    "first-time": "cp src/config/index.js src/config/local.config.js && npm run i && npm run start:local",
+    "first-time:prod": "cp src/config/index.js src/config/production.config.js && npm run i && npm run start:prod-pm2-monit",
     "i": "npm i -f && npx expo install --fix",
     "i:prod": "NODE_ENV=production npm ci -f --omit=dev && npx expo install --fix",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
@@ -14,40 +18,39 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "start:prod": "NODE_ENV=production expo start --web",
-    "start:default": "npm run start",
-    "start:local": "npm run android",
-    "start:localc": "rm -r -f .expo && expo start --android -c",
-    "start:code": "code . && npm run start:devc",
+    "start:local": "rm -r -f .expo && expo start --android -c",
+    "start:code": "code . && npm run start:local",
     "push": "npm run format && git add . && git commit -m",
-    "postpush": "git push && npm run start:default",
-    "clean": "rm -f package-lock.json && rm -r -f node_modules && rm -r -f .expo && rm -r -f backups && npm cache clean -f && npm run i && npm run start:default",
+    "postpush": "git push && npm run start:local",
+    "clean": "rm -f package-lock.json && rm -r -f node_modules && rm -r -f .expo && npm cache clean -f && npm run i && npm run start:local",
     "clean:prod": "rm -r -f node_modules && rm -r -f .expo && npm cache clean -f && npm run i:prod",
     "update": "rm -r -f backups/* && cp package.json backups/package.json.backup && cp package-lock.json backups/package-lock.json.backup 2>/dev/null; true && mv node_modules backups/node_modules.backup 2>/dev/null; true && npm i -D npm-check-updates -f && ncu -u && npm run clean",
-    "restore": "cp backups/package.json.backup package.json && cp backups/package-lock.json.backup package-lock.json && mv backups/node_modules.backup node_modules && npm run start:default"
+    "restore": "cp backups/package.json.backup package.json && cp backups/package-lock.json.backup package-lock.json && mv backups/node_modules.backup node_modules && npm run start:local",
+    "clup": "rm -f package-lock.json && rm -r -f node_modules && npm cache clean -f && npm i -D npm-check-updates -f && ncu -u && npm run i && npm run start:local"
   },
   "dependencies": {
-    "@expo/webpack-config": "^19.0.0",
-    "@react-native-async-storage/async-storage": "1.18.2",
-    "@react-navigation/bottom-tabs": "^6.5.11",
-    "@react-navigation/native": "^6.1.9",
-    "@react-navigation/native-stack": "^6.9.17",
-    "@react-navigation/stack": "^6.3.20",
-    "expo": "^49.0.21",
-    "expo-status-bar": "~1.6.0",
-    "expo-system-ui": "~2.4.0",
+    "@expo/webpack-config": "^19.0.1",
+    "@react-native-async-storage/async-storage": "1.21.0",
+    "@react-navigation/bottom-tabs": "^6.5.12",
+    "@react-navigation/native": "^6.1.10",
+    "@react-navigation/native-stack": "^6.9.18",
+    "@react-navigation/stack": "^6.3.21",
+    "expo": "^50.0.6",
+    "expo-status-bar": "~1.11.1",
+    "expo-system-ui": "~2.9.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.72.6",
+    "react-native": "0.73.4",
     "react-native-elements": "^3.4.3",
-    "react-native-gesture-handler": "~2.12.0",
-    "react-native-safe-area-context": "4.6.3",
-    "react-native-screens": "~3.22.0",
-    "react-native-web": "~0.19.9"
+    "react-native-gesture-handler": "~2.14.0",
+    "react-native-safe-area-context": "4.8.2",
+    "react-native-screens": "~3.29.0",
+    "react-native-web": "~0.19.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.3",
-    "npm-check-updates": "^16.14.11",
-    "prettier": "^3.1.0"
+    "@babel/core": "^7.23.9",
+    "npm-check-updates": "^16.14.14",
+    "prettier": "^3.2.5"
   },
   "private": true
 }
