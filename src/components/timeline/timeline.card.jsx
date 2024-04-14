@@ -2,12 +2,13 @@ import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { width, height } from '../../core/device'
 import React, { useState, useEffect } from 'react'
+import { setRatingApi } from '../reputation/reputation.api'
 
 const TimelineCard = ({ _id, facebook, rating }) => {
 	const [count, setCount] = useState(0)
 
 	const submitMyRating = ({ value, reputationId }) => {
-		console.log(value, reputationId)
+		setRatingApi({ reputationId, rating: { currentValue: value }, facebook })
 	}
 
 	return (
@@ -26,13 +27,7 @@ const TimelineCard = ({ _id, facebook, rating }) => {
 					title="+"
 				/>
 				<Text style={styles.myRating}>my rating: {count}</Text>
-				<TouchableOpacity
-					style={styles.submitButton}
-					onPress={() => {
-						submitMyRating({ value: count, reputationId: _id })
-					}}
-					title="send"
-				/>
+
 				<TouchableOpacity
 					style={[styles.ratingButtons, styles.minusButton]}
 					onPress={() => {
@@ -41,6 +36,13 @@ const TimelineCard = ({ _id, facebook, rating }) => {
 					title="-"
 				/>
 			</View>
+			<TouchableOpacity
+				style={styles.submitButton}
+				onPress={() => {
+					submitMyRating({ value: count, reputationId: _id })
+				}}
+				title="SUBMIT"
+			/>
 		</View>
 	)
 }
@@ -50,26 +52,27 @@ const styles = StyleSheet.create({
 		width: width / 1.1,
 		height: height / 4,
 		borderRadius: 10,
-		backgroundColor: 'green',
+		backgroundColor: '#4C22D5',
 		alignItems: 'right',
 		marginBottom: 100
 	},
 	ratingButtons: {
-		width: 10,
-		height: 10,
+		width: 25,
+		height: 25,
 		fontSize: 20
 	},
 	plusButton: {
-		backgroundColor: 'blue',
-		fontSize: 20
+		backgroundColor: 'blue'
 	},
 	minusButton: {
 		backgroundColor: 'red'
 	},
 	submitButton: {
 		backgroundColor: 'orange',
-		width: 10,
-		height: 10
+		tintColor: 'red',
+		fontSize: 100,
+		width: 40,
+		height: 30
 	},
 	myRating: {
 		color: 'red'

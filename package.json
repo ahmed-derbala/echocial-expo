@@ -24,32 +24,35 @@
     "postpush": "git push && npm run start:local",
     "clean": "rm -f package-lock.json && rm -r -f node_modules && rm -r -f .expo && npm cache clean -f && npm run i && npm run start:local",
     "clean:prod": "rm -r -f node_modules && rm -r -f .expo && npm cache clean -f && npm run i:prod",
-    "update": "rm -r -f backups/* && cp package.json backups/package.json.backup && cp package-lock.json backups/package-lock.json.backup 2>/dev/null; true && mv node_modules backups/node_modules.backup 2>/dev/null; true && npm i -D npm-check-updates -f && ncu -u && npm run clean",
+    "clean:only": "rm -f package-lock.json && rm -r -f node_modules && rm -r -f .expo && npm cache clean -f",
+    "backup": "rm -r -f backups/* && mkdir backups -p && cp package.json backups/package.json.backup && cp package-lock.json backups/package-lock.json.backup 2>/dev/null; true && mv node_modules backups/node_modules.backup 2>/dev/null; true",
+    "update": "npm run backup && npm run ncu && npm run clean",
     "restore": "cp backups/package.json.backup package.json && cp backups/package-lock.json.backup package-lock.json && mv backups/node_modules.backup node_modules && npm run start:local",
-    "clup": "rm -f package-lock.json && rm -r -f node_modules && npm cache clean -f && npm i -D npm-check-updates -f && ncu -u && npm run i && npm run start:local"
+    "ncu": "npm i -D npm-check-updates -f && ncu -u"
   },
   "dependencies": {
     "@expo/webpack-config": "^19.0.1",
     "@react-native-async-storage/async-storage": "1.21.0",
-    "@react-navigation/bottom-tabs": "^6.5.12",
-    "@react-navigation/native": "^6.1.10",
-    "@react-navigation/native-stack": "^6.9.18",
-    "@react-navigation/stack": "^6.3.21",
-    "expo": "^50.0.6",
+    "@react-navigation/bottom-tabs": "^6.5.20",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/native-stack": "^6.9.26",
+    "@react-navigation/stack": "^6.3.29",
+    "expo": "^50.0.15",
     "expo-status-bar": "~1.11.1",
     "expo-system-ui": "~2.9.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-native": "0.73.4",
+    "react-native": "0.73.6",
     "react-native-elements": "^3.4.3",
     "react-native-gesture-handler": "~2.14.0",
     "react-native-safe-area-context": "4.8.2",
     "react-native-screens": "~3.29.0",
-    "react-native-web": "~0.19.10"
+    "react-native-web": "~0.19.10",
+    "typescript": "^5.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "npm-check-updates": "^16.14.14",
+    "@babel/core": "^7.24.4",
+    "npm-check-updates": "^16.14.18",
     "prettier": "^3.2.5"
   },
   "private": true

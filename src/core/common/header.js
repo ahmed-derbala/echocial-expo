@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
 import config from '../../config'
-import { width } from '../../core/device'
+import { width } from '../device'
 
 const Header = ({ title }) => {
 	if (!title) {

@@ -6,7 +6,7 @@ import { log } from '../../core/log'
 import { processLimit, processPage } from '../../core/pagination'
 import { successHandler } from '../../core/success'
 
-export const setRating = async ({ reputationId, rating, facebook }) => {
+export const setRatingApi = async ({ reputationId, rating, facebook }) => {
 	try {
 		const apiResp = await callApi({
 			method: 'put',

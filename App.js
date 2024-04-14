@@ -8,7 +8,7 @@ import { SplashScreen } from "./src/components/splash/splash.screen"
 //import {AuthScreen} from "./src/components/auth.screen"
 import * as authAPI from "./src/components/auth/auth.api"
 import { saveToken, getToken, deleteToken, saveUser } from "./src/components/auth/auth.service"
-
+import config from './src/config'
 
 
 const Stack = createStackNavigator();
@@ -141,7 +141,7 @@ export default function App({ navigation }) {
             />
           ) : (
             // User is signed in
-            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name={config.app.name} component={HomeScreen} />
           )}
         </Stack.Navigator>
       </NavigationContainer>

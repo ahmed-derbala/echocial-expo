@@ -1,7 +1,7 @@
 import config from '../config'
 import { errorHandler } from './error'
 import { log } from './log'
-import { getToken } from '../components/auth/auth.service'
+import { getToken, deleteToken } from '../components/auth/auth.service'
 
 export const callApi = ({ method, resource, body }) => {
 	return new Promise(async (resolve, reject) => {
@@ -28,6 +28,10 @@ export const callApi = ({ method, resource, body }) => {
 
 			resp = await resp.json()
 			//console.log({resp})
+
+			if (resp.status === 401) {
+				return deleteToken()
+			}
 			if (resp.status > 499) {
 				return reject(resp)
 			}

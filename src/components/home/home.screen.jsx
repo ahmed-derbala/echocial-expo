@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Button, Text, View } from 'react-native'
-import Header from '../header/header'
+import Header from '../../core/common/header'
 import Card from '../cards/card'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'

@@ -4,9 +4,8 @@ import { errorHandler } from '../../core/error'
 import { log } from '../../core/log'
 
 export const saveToken = async (value) => {
-	log({ level: 'debug', message: 'saveToken...' })
-
 	try {
+		log({ level: 'debug', message: 'saveToken...' })
 		await AsyncStorage.setItem(config.localKeys.token, value)
 	} catch (err) {
 		errorHandler({ err })
@@ -37,9 +36,7 @@ export const getToken = async () => {
 export const deleteToken = async () => {
 	try {
 		await AsyncStorage.removeItem(config.localKeys.token).then(() => {
-			/* this.setState({
-			jwt: ''
-		  })*/
+			log({ level: 'debug', message: 'user token deleted', caller: deleteToken.name })
 		})
 	} catch (err) {
 		errorHandler({ err })
@@ -56,7 +53,7 @@ export const saveUser = async (value) => {
 }
 
 export const getUser = async () => {
-	log({ level: 'debug', message: 'saveUser...', caller: getUser.name })
+	log({ level: 'debug', message: 'getUser...', caller: getUser.name })
 	try {
 		const jsonValue = await AsyncStorage.getItem(config.localKeys.user)
 		return jsonValue != null ? JSON.parse(jsonValue) : null

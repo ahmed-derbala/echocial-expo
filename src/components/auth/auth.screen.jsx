@@ -30,7 +30,7 @@ export default function AuthScreen({ navigation }) {
 			if (!signinApiResp || !signinApiResp.data?.token) return
 			await saveToken(signinApiResp.data.token)
 			const token = await getToken()
-			//console.log(token,'token');
+			console.log(token, 'token')
 			//navigation.navigate('Auth')
 		} catch (err) {
 			errorHandler({ err })

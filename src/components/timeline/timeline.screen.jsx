@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import { Text, View, SafeAreaView, FlatList } from 'react-native'
-import Header from '../header/header'
+import Header from '../../core/common/header'
 import TimelineCard from './timeline.card'
 import { errorHandler } from '../../core/error'
 import { log } from '../../core/log'
